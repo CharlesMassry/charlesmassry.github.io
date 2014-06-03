@@ -1,0 +1,37 @@
+body {
+  font: 16px Helvetica, Arial, sans-serif;
+  background: url(photo.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover
+}
+
+.textbox {
+  position: relative;
+  left: 70%;
+  width: 25%;
+  padding: 10px;
+  background-color:rgba(0, 0, 0, 0.4);
+  color: white;
+  line-height: 1.25em;
+  border-radius: 5px;
+}
+
+.links {
+  font-size: 22px;
+}
+
+a {
+  color: #f4efcb;
+  text-decoration: none
+}
+
+a:hover {
+  color: #c1bc98;
+  text-decoration: none
+}
+
+h1 {
+  margin-top:0;
+}
