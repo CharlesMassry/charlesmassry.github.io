@@ -9,8 +9,6 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
-    "@fontsource/merriweather": "^5.3.0",
-    "@fontsource/montserrat": "^5.3.0",
     "astro": "^7.4.12"
   }
 }

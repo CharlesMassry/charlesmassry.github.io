@@ -1,0 +1,9 @@
+/* The same Merriweather and Montserrat font files the old Gatsby blog used
+   (typeface-merriweather / typeface-montserrat), so text sets identically. */
+@font-face { font-family: Merriweather; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/merriweather-400.woff2) format("woff2"); }
+@font-face { font-family: Merriweather; font-style: italic; font-weight: 400; font-display: swap; src: url(/fonts/merriweather-400italic.woff2) format("woff2"); }
+@font-face { font-family: Merriweather; font-style: normal; font-weight: 700; font-display: swap; src: url(/fonts/merriweather-700.woff2) format("woff2"); }
+@font-face { font-family: Merriweather; font-style: italic; font-weight: 700; font-display: swap; src: url(/fonts/merriweather-700italic.woff2) format("woff2"); }
+@font-face { font-family: Merriweather; font-style: normal; font-weight: 900; font-display: swap; src: url(/fonts/merriweather-900.woff2) format("woff2"); }
+@font-face { font-family: Merriweather; font-style: italic; font-weight: 900; font-display: swap; src: url(/fonts/merriweather-900italic.woff2) format("woff2"); }
+@font-face { font-family: Montserrat; font-style: normal; font-weight: 900; font-display: swap; src: url(/fonts/montserrat-900.woff2) format("woff2"); }

@@ -26,7 +26,8 @@ export function excerpt(markdown: string | undefined, length = 140) {
     .replace(/^\s*#+\s*/gm, '')
     .replace(/[*_>#]/g, '')
     .replace(/\s+/g, ' ')
-    .trim();
+    .trim()
+    .replace(/(\w)'(\w)/g, '$1\u2019$2');
   if (text.length <= length) return text;
-  return text.slice(0, text.lastIndexOf(' ', length)) + '…';
+  return text.slice(0, text.lastIndexOf(' ', length)).replace(/[,;:.]+$/, '') + '…';
 }

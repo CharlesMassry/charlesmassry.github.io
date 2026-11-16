@@ -1,17 +1,23 @@
-/* Recreates the look of the old Gatsby blog (typography-theme-wordpress-2016). */
+/*
+ * Matches the old Gatsby blog: typography-theme-wordpress-2016 (values copied
+ * from the CSS it generated), plus the old src/styles/global.css link colors.
+ * 1.75rem is the theme's vertical rhythm unit.
+ */
 :root {
-  --text: hsla(0, 0%, 0%, 0.9);
-  --muted: hsla(0, 0%, 0%, 0.6);
-  --link: #007acc;
-  --rule: hsla(0, 0%, 0%, 0.2);
-  --code-bg: #f6f8fa;
   --rhythm: 1.75rem;
+  --text: hsla(0, 0%, 0%, 0.9);
+  --link: #800640;
+  --link-hover: #680534;
+  --rule: hsla(0, 0%, 0%, 0.2);
 }
 
-html { font-size: 131.25%; line-height: 1.75; }
-@media (max-width: 480px) { html { font-size: 100%; } }
-
 *, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font: 100%/1.75 Merriweather, Georgia, serif;
+  -webkit-text-size-adjust: 100%;
+  overflow-y: scroll;
+}
 
 body {
   margin: 0;
@@ -21,106 +27,127 @@ body {
   font-weight: 400;
   word-wrap: break-word;
   font-kerning: normal;
+  font-feature-settings: "kern", "liga", "clig", "calt";
 }
 
-.container {
-  max-width: calc(var(--rhythm) * 24);
-  margin: 0 auto;
-  padding: calc(var(--rhythm) * 1.5) calc(var(--rhythm) * 0.75);
+/* Every block element sits on the rhythm: no top margin, one unit below. */
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, pre, table, blockquote, hr, img, iframe, address {
+  margin: 0 0 var(--rhythm);
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Montserrat, sans-serif;
+  margin-top: calc(var(--rhythm) * 2);
+  color: inherit;
+  font-family: Merriweather, Georgia, serif;
   font-weight: 900;
   line-height: 1.1;
-  margin: calc(var(--rhythm) * 2) 0 var(--rhythm);
   text-rendering: optimizeLegibility;
 }
-h1 { font-size: 2.5rem; }
-h2 { font-size: 1.73rem; }
-h3 { font-size: 1.38rem; }
-h4 { font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; }
+h1 { font-family: Montserrat, sans-serif; font-size: 2.5rem; }
+h2 { font-size: 1.73286rem; }
+h3 { font-size: 1.4427rem; }
+h4 { font-size: 1rem; letter-spacing: 0.140625em; text-transform: uppercase; }
+h5 { font-size: 0.83255rem; }
+h6 { font-size: 0.75966rem; font-style: italic; }
 
-p, ul, ol, pre, blockquote, table, figure { margin: 0 0 var(--rhythm); }
-ul, ol { padding-left: var(--rhythm); }
+b, strong, dt, th { font-weight: 700; }
+small { font-size: 80%; }
+img { max-width: 100%; }
+
+ul, ol { margin-left: 0; list-style-position: outside; }
+ul { list-style: disc; }
 li { margin-bottom: calc(var(--rhythm) / 2); }
-img { max-width: 100%; height: auto; }
+li > ul, li > ol { margin: calc(var(--rhythm) / 2) 0 calc(var(--rhythm) / 2) var(--rhythm); }
+li > p { margin-bottom: calc(var(--rhythm) / 2); }
+li *:last-child, p *:last-child, blockquote > :last-child { margin-bottom: 0; }
 
 a {
   color: var(--link);
   text-decoration: none;
   box-shadow: 0 1px 0 0 currentColor;
 }
-a:hover, a:active { box-shadow: none; }
+a:hover, a:active { color: var(--link-hover); box-shadow: none; }
 
 hr {
-  border: 0;
   height: 1px;
+  border: none;
   background: var(--rule);
-  margin: 0 0 var(--rhythm);
+  margin-bottom: calc(var(--rhythm) - 1px);
 }
 
 blockquote {
-  margin-left: calc(var(--rhythm) * -0.75);
-  padding-left: calc(var(--rhythm) * 0.5);
-  border-left: calc(var(--rhythm) * 0.25) solid var(--rule);
-  color: var(--muted);
+  margin: 0 var(--rhythm) var(--rhythm) calc(var(--rhythm) * -1);
+  padding-left: 1.42188rem;
+  border-left: 0.32813rem solid hsla(0, 0%, 0%, 0.9);
+  color: hsla(0, 0%, 0%, 0.59);
+  font-size: 1.20112rem;
+  line-height: var(--rhythm);
   font-style: italic;
 }
 
-code, pre {
-  font-family: Consolas, 'Roboto Mono', Menlo, monospace;
-  font-size: 0.8rem;
+code, kbd, samp, pre {
+  font-family: monospace, monospace;
+  font-size: 0.85rem;
+  line-height: var(--rhythm);
 }
-:not(pre) > code {
-  background: var(--code-bg);
-  padding: 0.1em 0.3em;
-  border-radius: 0.3em;
-}
-pre {
-  padding: calc(var(--rhythm) * 0.6);
-  border-radius: 0.3em;
-  overflow-x: auto;
-  line-height: 1.5;
-}
-pre:not(.astro-code) { background: var(--code-bg); }
+pre code { font-size: inherit; }
+pre { overflow-x: auto; }
 
-table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; border-bottom: 1px solid var(--rule); padding: 0.4rem 0.6rem; }
+table { width: 100%; border-collapse: collapse; font-size: 1rem; line-height: var(--rhythm); }
+td, th {
+  text-align: left;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
+  padding: 0.875rem 1.16667rem calc(0.875rem - 1px);
+}
+th:first-child, td:first-child { padding-left: 0; }
+th:last-child, td:last-child { padding-right: 0; }
 
-/* Header */
+@media only screen and (max-width: 480px) {
+  ul, ol { margin-left: var(--rhythm); }
+  blockquote { margin-left: -1.3125rem; margin-right: 0; padding-left: 0.98438rem; }
+}
+
+/* Layout (from the old layout.js) */
+.container {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.625rem 1.3125rem;
+}
+
 .site-title { margin-top: 0; }
-.site-title a { box-shadow: none; color: inherit; }
-h1.site-title { font-size: 3.95rem; margin-bottom: calc(var(--rhythm) * 1.5); }
-@media (max-width: 480px) { h1.site-title { font-size: 2.6rem; } }
+.site-title a { box-shadow: none; text-decoration: none; color: inherit; }
+h1.site-title { font-size: 3.95285rem; line-height: 4.375rem; margin-bottom: 2.625rem; }
+h3.site-title { font-family: Montserrat, sans-serif; }
 
-/* Bio */
-.bio { display: flex; align-items: flex-start; margin-bottom: calc(var(--rhythm) * 2.5); }
+/* Bio (from the old bio.js) */
+.bio { display: flex; margin-bottom: 4.375rem; }
 .bio .avatar {
   width: 50px;
   height: 50px;
   min-width: 50px;
-  margin-right: calc(var(--rhythm) / 2);
+  margin: 0 0.875rem 0 0;
   border-radius: 50%;
   object-fit: cover;
 }
-.bio p { margin: 0; }
 
-/* Post list */
-.post-summary h3 { margin-bottom: calc(var(--rhythm) / 4); }
+/* Post list (from the old pages/index.js) */
+.post-summary h3 { margin-bottom: 0.4375rem; }
 .post-summary h3 a { box-shadow: none; }
 
-/* Post page */
+/* Post page (from the old templates/blog-post.js) */
 .post-title { margin-top: var(--rhythm); margin-bottom: 0; }
-.post-date { font-size: 0.83rem; margin-bottom: var(--rhythm); }
+.post-date {
+  display: block;
+  font-size: 0.83255rem;
+  line-height: var(--rhythm);
+  margin-bottom: var(--rhythm);
+}
 
 .pager {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: calc(var(--rhythm) / 2);
   list-style: none;
   padding: 0;
 }
-
-footer { margin-top: var(--rhythm); }
