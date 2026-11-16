@@ -1,0 +1,46 @@
+---
+import '@fontsource/merriweather/400.css';
+import '@fontsource/merriweather/400-italic.css';
+import '@fontsource/merriweather/900.css';
+import '@fontsource/montserrat/900.css';
+import '../styles/blog.css';
+import { SITE } from '../site';
+
+interface Props {
+  title: string;
+  description?: string;
+  isIndex?: boolean;
+}
+const { title, description = SITE.description, isIndex = false } = Astro.props;
+const fullTitle = `${title} | ${SITE.title}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/png" href="/posts/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/posts/rss.xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content={SITE.author} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        {isIndex
+          ? <h1 class="site-title"><a href="/">{SITE.title}</a></h1>
+          : <h3 class="site-title small"><a href="/posts/">{SITE.title}</a></h3>}
+      </header>
+      <main><slot /></main>
+      <footer>© 2013 — {new Date().getFullYear()}</footer>
+    </div>
+  </body>
+</html>

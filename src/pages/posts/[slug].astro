@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import Bio from '../../components/Bio.astro';
+import { formatDate, excerpt } from '../../site';
+
+export async function getStaticPaths() {
+  // Newest first, so "previous" is the older post and "next" the newer one.
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, previous: posts[i + 1], next: posts[i - 1] },
+  }));
+}
+
+const { post, previous, next } = Astro.props;
+const { Content } = await render(post);
+---
+<BlogLayout title={post.data.title} description={excerpt(post.body, 160)}>
+  <article>
+    <header>
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-date">{formatDate(post.data.date)}</p>
+    </header>
+    <section class="post-body"><Content /></section>
+    <hr />
+    <footer><Bio /></footer>
+  </article>
+  <nav>
+    <ul class="pager">
+      <li>{previous && <a href={`/posts/${previous.id}/`} rel="prev">← {previous.data.title}</a>}</li>
+      <li>{next && <a href={`/posts/${next.id}/`} rel="next">{next.data.title} →</a>}</li>
+    </ul>
+  </nav>
+</BlogLayout>

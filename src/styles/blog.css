@@ -1,0 +1,126 @@
+/* Recreates the look of the old Gatsby blog (typography-theme-wordpress-2016). */
+:root {
+  --text: hsla(0, 0%, 0%, 0.9);
+  --muted: hsla(0, 0%, 0%, 0.6);
+  --link: #007acc;
+  --rule: hsla(0, 0%, 0%, 0.2);
+  --code-bg: #f6f8fa;
+  --rhythm: 1.75rem;
+}
+
+html { font-size: 131.25%; line-height: 1.75; }
+@media (max-width: 480px) { html { font-size: 100%; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--text);
+  font-family: Merriweather, Georgia, serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  font-kerning: normal;
+}
+
+.container {
+  max-width: calc(var(--rhythm) * 24);
+  margin: 0 auto;
+  padding: calc(var(--rhythm) * 1.5) calc(var(--rhythm) * 0.75);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: calc(var(--rhythm) * 2) 0 var(--rhythm);
+  text-rendering: optimizeLegibility;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.73rem; }
+h3 { font-size: 1.38rem; }
+h4 { font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+p, ul, ol, pre, blockquote, table, figure { margin: 0 0 var(--rhythm); }
+ul, ol { padding-left: var(--rhythm); }
+li { margin-bottom: calc(var(--rhythm) / 2); }
+img { max-width: 100%; height: auto; }
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  box-shadow: 0 1px 0 0 currentColor;
+}
+a:hover, a:active { box-shadow: none; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 0 var(--rhythm);
+}
+
+blockquote {
+  margin-left: calc(var(--rhythm) * -0.75);
+  padding-left: calc(var(--rhythm) * 0.5);
+  border-left: calc(var(--rhythm) * 0.25) solid var(--rule);
+  color: var(--muted);
+  font-style: italic;
+}
+
+code, pre {
+  font-family: Consolas, 'Roboto Mono', Menlo, monospace;
+  font-size: 0.8rem;
+}
+:not(pre) > code {
+  background: var(--code-bg);
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+}
+pre {
+  padding: calc(var(--rhythm) * 0.6);
+  border-radius: 0.3em;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+pre:not(.astro-code) { background: var(--code-bg); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; border-bottom: 1px solid var(--rule); padding: 0.4rem 0.6rem; }
+
+/* Header */
+.site-title { margin-top: 0; }
+.site-title a { box-shadow: none; color: inherit; }
+h1.site-title { font-size: 3.95rem; margin-bottom: calc(var(--rhythm) * 1.5); }
+@media (max-width: 480px) { h1.site-title { font-size: 2.6rem; } }
+
+/* Bio */
+.bio { display: flex; align-items: flex-start; margin-bottom: calc(var(--rhythm) * 2.5); }
+.bio .avatar {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  margin-right: calc(var(--rhythm) / 2);
+  border-radius: 50%;
+  object-fit: cover;
+}
+.bio p { margin: 0; }
+
+/* Post list */
+.post-summary h3 { margin-bottom: calc(var(--rhythm) / 4); }
+.post-summary h3 a { box-shadow: none; }
+
+/* Post page */
+.post-title { margin-top: var(--rhythm); margin-bottom: 0; }
+.post-date { font-size: 0.83rem; margin-bottom: var(--rhythm); }
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: calc(var(--rhythm) / 2);
+  list-style: none;
+  padding: 0;
+}
+
+footer { margin-top: var(--rhythm); }

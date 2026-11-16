@@ -1,0 +1,13 @@
+---
+import { Image } from 'astro:assets';
+import pic from '../assets/pic.jpg';
+import { SITE } from '../site';
+---
+<div class="bio">
+  <Image src={pic} alt={SITE.author} width={50} height={50} class="avatar" />
+  <p>
+    Written by <strong>{SITE.author}</strong> who lives in New Jersey building useful things.
+    {' '}
+    <a href={`https://twitter.com/${SITE.twitter}`}>You should follow him on Twitter</a>
+  </p>
+</div>
